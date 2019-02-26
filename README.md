@@ -1,6 +1,6 @@
 # MongoDB for Docker
 
-Docker image that should be used to start an MongoDB server.
+Docker image that should be used to start a MongoDB server.
 
 ## Synopsis
 
@@ -44,8 +44,8 @@ A build example:
 docker build --squash --force-rm --no-cache --quiet --tag johndoe/my_mongodb:latest .
 ```
 
-To clean the _<none>_ image left by the `--squash` option the following command
-can be used:
+To clean the _<none>_ image(s) left by the `--squash` option the following
+command can be used:
 
 ```
 docker rmi `docker images --filter "dangling=true" --quiet`
@@ -78,11 +78,14 @@ the following command:
 docker volume create --name <VOLUME_NAME>
 ```
 
-Two create the two required volumes the following set of commands can be used:
+Two create the required volume the following command can be used:
 
 ```
 docker volume create --name my_mongodb
 ```
+
+**Note:** A local folder can also be used instead of a volume. Use the path of
+the folder in place of the volume name.
 
 #### Configuring the MongoDB Server
 
