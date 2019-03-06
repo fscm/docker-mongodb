@@ -5,7 +5,7 @@ ARG MONGODB_VERSION="4.0.5"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY files/* /usr/local/bin/
+COPY files/ /root/
 
 RUN \
   apt-get -qq update && \
@@ -26,8 +26,8 @@ RUN \
   curl -sL --retry 3 --insecure "https://busybox.net/downloads/binaries/${BUSYBOX_VERSION}-i686/busybox" -o /build/bin/busybox && \
   chmod +x /build/bin/busybox && \
   for p in [ [[ basename cat cp date diff du echo env grep less ls mkdir mknod mktemp more mv ping ps rm sort stty; do ln -s busybox /build/bin/${p}; done && \
-  chmod a+x /usr/local/bin/* && \
-  cp /usr/local/bin/* /build/bin/
+  chmod a+x /root/scripts/* && \
+  cp /root/scripts/* /build/bin/
 
 
 
