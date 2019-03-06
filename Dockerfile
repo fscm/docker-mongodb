@@ -1,7 +1,7 @@
 FROM fscm/debian:stretch as build
 
 ARG BUSYBOX_VERSION="1.27.1"
-ARG MONGODB_VERSION="4.0.5"
+ARG MONGODB_VERSION="4.0.6"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
