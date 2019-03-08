@@ -1,6 +1,10 @@
 # MongoDB for Docker
 
-Docker image that should be used to start a MongoDB server.
+[![Docker Pulls](https://img.shields.io/docker/pulls/fscm/mongodb.svg?color=black&logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/fscm/mongodb)
+[![Docker Stars](https://img.shields.io/docker/stars/fscm/mongodb.svg?color=black&logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/fscm/mongodb)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/fscm/mongodb.svg?color=black&logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/fscm/mongodb)
+
+Docker image with MongoDB.
 
 ## Synopsis
 
