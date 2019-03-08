@@ -115,7 +115,7 @@ if [[ "${ACTION_START}" -gt 0 ]]; then
   fi
 
   # Start the MongoDB server
-  /bin/mongod --bind_ip 0.0.0.0 --dbpath ${__MONGODB_DATA__}
+  /bin/mongod --bind_ip_all --dbpath ${__MONGODB_DATA__}
 fi
 
 # All done
