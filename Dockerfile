@@ -1,15 +1,25 @@
 FROM fscm/debian:stretch as build
 
 ARG BUSYBOX_VERSION="1.30.0"
-ARG MONGODB_VERSION="4.0.6"
+ARG MONGODB_VERSION="4.0.10"
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV \
+  LANG=C.UTF-8 \
+  DEBIAN_FRONTEND=noninteractive
 
 COPY files/ /root/
 
 RUN \
   apt-get -qq update && \
-  apt-get -qq -y -o=Dpkg::Use-Pty=0 --no-install-recommends install curl gzip libc6 libcurl3 libgcc1 libpcap0.8 libssl1.1 tar && \
+  apt-get -qq -y -o=Dpkg::Use-Pty=0 --no-install-recommends install \
+    curl \
+    gzip \
+    libc6 \
+    libcurl3 \
+    libgcc1 \
+    libpcap0.8 \
+    libssl1.1 \
+    tar && \
   sed -i '/path-include/d' /etc/dpkg/dpkg.cfg.d/90docker-excludes && \
   mkdir -p /build/data/mongodb && \
   mkdir -p /src/apt/dpkg && \
@@ -54,6 +64,8 @@ COPY --from=build \
   /build .
 
 VOLUME ["/data/mongodb"]
+
+ENV LANG=C.UTF-8
 
 ENTRYPOINT ["/bin/run"]
 
