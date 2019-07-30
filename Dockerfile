@@ -1,4 +1,4 @@
-FROM fscm/debian:stretch as build
+FROM fscm/debian:buster as build
 
 ARG BUSYBOX_VERSION="1.30.0"
 ARG MONGODB_VERSION="4.0.10"
@@ -15,7 +15,7 @@ RUN \
     curl \
     gzip \
     libc6 \
-    libcurl3 \
+    libcurl4 \
     libgcc1 \
     libpcap0.8 \
     libssl1.1 \
