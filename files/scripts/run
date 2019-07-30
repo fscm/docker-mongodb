@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Shell script to start the MongoDB Docker image.
 #
@@ -53,14 +53,14 @@ done
 shift $((OPTIND-1))
 
 for command in "${@}"; do
-  case "${command,,}" in
-    help)
+  case "${command}" in
+    [Hh][Ee][Ll][Pp])
       ACTION_HELP=1
       ;;
-    init)
+    [Ii][Nn][Ii][Tt])
       ACTION_INIT=1
       ;;
-    start)
+    [Ss][Tt][Aa][Rr][Tt])
       ACTION_START=1
       ;;
     *)
@@ -75,14 +75,14 @@ if [[ $# -eq 0 ]]; then
   show_usage
   exit 3
 fi
-if ! ((ACTION_HELP+ACTION_INIT+ACTION_START)); then
+if [[ "$((ACTION_HELP+ACTION_INIT+ACTION_START))" -eq 0 ]]; then
   show_usage
   exit 0
 fi
 
 
 # Check permissions
-if [[ $EUID -ne 0 ]]; then
+if [[ "$(id -u)" -ne 0 ]]; then
   echo >&2 "  [ERROR] This script requires privileged access to system files"
   exit 4
 fi
