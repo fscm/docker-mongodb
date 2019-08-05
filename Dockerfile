@@ -9,6 +9,8 @@ ENV \
 
 COPY files/ /root/
 
+WORKDIR /root
+
 RUN \
   apt-get -qq update && \
   apt-get -qq -y -o=Dpkg::Use-Pty=0 --no-install-recommends install \
@@ -31,7 +33,7 @@ RUN \
   ./lddcp $(for f in `find /build/ -type f -executable`; do echo "-p $f "; done) $(for f in `find /lib/x86_64-linux-gnu/ \( -name 'libnss*' -o -name 'libresolv*' \)`; do echo "-l $f "; done) -d /build && \
   curl -sL --retry 3 --insecure "https://busybox.net/downloads/binaries/${BUSYBOX_VERSION}-i686-uclibc/busybox" -o /build/bin/busybox && \
   chmod +x /build/bin/busybox && \
-  for p in [ [[ basename cat cp date dirname du env getopt grep gzip id kill less ln ls mkdir pgrep ps pwd rm sed sh tar wget; do ln -s busybox /build/bin/${p}; done && \
+  for p in [ [[ basename cat cp date dirname du env getopt grep gzip id kill less ln ls mkdir pgrep ps pwd rm sed sh tar wget; do ln /build/bin/busybox /build/bin/${p}; done && \
   mkdir -p /build/usr/local && \
   chmod a+x /root/tests/* && \
   cp -R /root/tests /build/usr/local/ && \
