@@ -48,7 +48,7 @@ else
 fi
 
 start_dir=$(pwd)
-cd ${MONGODB_TESTS}
+cd ${MONGODB_TESTS}/mongo-r${MONGODB_VERSION}/
 for test in ${MONGODB_TESTS}/mongo-r${MONGODB_VERSION}/jstests/core/*.js; do
   echo -n "[TEST] Running test '$(basename ${test})'... "
   TESTS_TOTAL=$((TESTS_TOTAL+1))
