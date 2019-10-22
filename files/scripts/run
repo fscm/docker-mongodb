@@ -71,32 +71,32 @@ done
 
 
 # Check arguments
-if [[ $# -eq 0 ]]; then
+if [ $# -eq 0 ]; then
   show_usage
   exit 3
 fi
-if [[ "$((ACTION_HELP+ACTION_INIT+ACTION_START))" -eq 0 ]]; then
+if [ "$((ACTION_HELP+ACTION_INIT+ACTION_START))" -eq 0 ]; then
   show_usage
   exit 0
 fi
 
 
 # Check permissions
-if [[ "$(id -u)" -ne 0 ]]; then
-  echo >&2 "  [ERROR] This script requires privileged access to system files"
-  exit 4
-fi
+#if [[ "$(id -u)" -ne 0 ]]; then
+#  echo >&2 "  [ERROR] This script requires privileged access to system files"
+#  exit 4
+#fi
 
 
 # === HELP ===
-if [[ "${ACTION_HELP}" -gt 0 ]]; then
+if [ "${ACTION_HELP}" -gt 0 ]; then
   show_usage
   exit 0
 fi
 
 
 # === INIT ===
-if [[ "${ACTION_INIT}" -gt 0 ]]; then
+if [ "${ACTION_INIT}" -gt 0 ]; then
 
   # Nothing to do
   echo "  [INFO] NOTHING TO DO. run the 'start' command."
@@ -107,11 +107,16 @@ fi
 
 
 # === START ===
-if [[ "${ACTION_START}" -gt 0 ]]; then
+if [ "${ACTION_START}" -gt 0 ]; then
 
   # Create temporary dir (if needed)
   if ! [[ -d /tmp ]]; then
     mkdir -m 1777 /tmp
+  fi
+
+  # Create data dir (if needed)
+  if ! [ -d ${__MONGODB_DATA__} ]; then
+    mkdir -m 0755 ${__MONGODB_DATA__}
   fi
 
   # Start the MongoDB server

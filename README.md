@@ -11,7 +11,8 @@ A small MongoDB image that can be used to start a MongoDB server.
 - `4.0.5`
 - `4.0.6`
 - `4.0.10`
-- `4.0.11`, `latest`
+- `4.0.11`
+- `4.2.1`, `latest`
 
 ## What is MongoDB?
 
@@ -63,7 +64,7 @@ docker volume create --name VOLUME_NAME
 Two create the required volume the following command can be used:
 
 ```
-docker volume create --name my_mongodb
+docker volume create --name my_data
 ```
 
 **Note:** A local folder can also be used instead of a volume. Use the path of
@@ -80,13 +81,13 @@ After configuring the MongoDB server the same can now be started.
 Starting the MongoDB server can be done with the `start` command.
 
 ```
-docker run --volume MONGODB_VOL:/data/mongodb:rw --detach --interactive --tty -p 27017:27017 fscm/mongodb:latest start
+docker run --volume MONGODB_VOL:/data:rw --detach --interactive --tty -p 27017:27017 fscm/mongodb:latest start
 ```
 
 An example on how the MongoDB service can be started:
 
 ```
-docker run --volume my_mongodb:/data/mongodb:rw --detach --interactive --tty -p 27017:27017 --name my_mongodb fscm/mongodb:latest start
+docker run --volume my_data:/data:rw --detach --interactive --tty -p 27017:27017 --name my_mongodb fscm/mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:
