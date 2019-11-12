@@ -25,7 +25,7 @@ __MONGODB_DATA__="/data/mongodb"
 
 
 # Usage
-function show_usage() {
+show_usage() {
   echo "Usage: ${BASENAME} [options] (help|init|start)"
   echo "  help:"
   echo "    <none>"
@@ -110,13 +110,14 @@ fi
 if [ "${ACTION_START}" -gt 0 ]; then
 
   # Create temporary dir (if needed)
-  if ! [[ -d /tmp ]]; then
+  if ! [ -d /tmp ]; then
     mkdir -m 1777 /tmp
   fi
 
   # Create data dir (if needed)
   if ! [ -d ${__MONGODB_DATA__} ]; then
-    mkdir -m 0755 ${__MONGODB_DATA__}
+    mkdir -p ${__MONGODB_DATA__}
+    chmod 0755 ${__MONGODB_DATA__}
   fi
 
   # Start the MongoDB server
