@@ -98,19 +98,19 @@ After configuring the MongoDB server the same can now be started.
 Starting the MongoDB server can be done with the `start` command.
 
 ```
-docker run --volume <MONGODB_VOL>:/data/mongodb:rw --detach --interactive --tty -p 27017:27017 <USER>/<IMAGE>:<TAG> start
+docker run --volume <MONGODB_VOL>:/data/mongodb:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
 ```
 
 An example on how the MongoDB service can be started:
 
 ```
-docker run --volume my_mongodb:/data/mongodb:rw --detach --interactive --tty -p 27017:27017 --name my_mongodb johndoe/my_mongodb:latest start
+docker run --volume my_mongodb:/data/mongodb:rw --detach --publish 27017:27017 --name my_mongodb johndoe/my_mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:
 
 ```
-docker attach <CONTAINER_ID>
+docker container attach <CONTAINER_ID>
 ```
 
 Use the `ctrl+p` `ctrl+q` command sequence to detach from the container.
@@ -123,13 +123,13 @@ the command used to perform the initial start was as indicated before).
 To stop the server use the following command:
 
 ```
-docker stop <CONTAINER_ID>
+docker container stop <CONTAINER_ID>
 ```
 
 To start the server again use the following command:
 
 ```
-docker start <CONTAINER_ID>
+docker container start <CONTAINER_ID>
 ```
 
 ### MongoDB Status
@@ -146,7 +146,7 @@ docker container logs <CONTAINER_ID>
 Additional tags can be added to the image using the following command:
 
 ```
-docker tag <image_id> <user>/<image>:<extra_tag>
+docker image tag <image_id> <user>/<image>:<extra_tag>
 ```
 
 ### Push the image to Docker Hub
@@ -162,13 +162,13 @@ docker login
 When logged in, an image can be pushed using the following command:
 
 ```
-docker push <user>/<image>:<tag>
+docker image push <user>/<image>:<tag>
 ```
 
 Extra tags can also be pushed.
 
 ```
-docker push <user>/<image>:<extra_tag>
+docker image push <user>/<image>:<extra_tag>
 ```
 
 ## Contributing

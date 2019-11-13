@@ -81,13 +81,13 @@ After configuring the MongoDB server the same can now be started.
 Starting the MongoDB server can be done with the `start` command.
 
 ```
-docker container run --volume MONGODB_VOL:/data:rw --detach --interactive --tty -p 27017:27017 fscm/mongodb:latest start
+docker container run --volume MONGODB_VOL:/data:rw --detach --publish 27017:27017 fscm/mongodb:latest start
 ```
 
 An example on how the MongoDB service can be started:
 
 ```
-docker container run --volume my_data:/data:rw --detach --interactive --tty -p 27017:27017 --name my_mongodb fscm/mongodb:latest start
+docker container run --volume my_data:/data:rw --detach --publish 27017:27017 --name my_mongodb fscm/mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:
