@@ -8,7 +8,8 @@ A small MongoDB image that can be used to start a MongoDB server.
 - `4.0.6`
 - `4.0.10`
 - `4.0.11`
-- `4.2.1`, `latest`
+- `4.2.1`
+- `4.2.6`, `latest`
 
 ## What is MongoDB?
 

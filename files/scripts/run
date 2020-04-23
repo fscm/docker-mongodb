@@ -21,7 +21,8 @@ ACTION_HELP=0
 ACTION_INIT=0
 ACTION_START=0
 
-__MONGODB_DATA__="/data/mongodb"
+__DATA_DIR__="/data"
+__MONGODB_DATA__="${__DATA_DIR__}/mongodb"
 
 
 # Usage
@@ -64,7 +65,8 @@ for command in "${@}"; do
       ACTION_START=1
       ;;
     *)
-      echo >&2 "  [WARN] Unknown command '${command}'"
+      #echo >&2 "  [WARN] Unknown command '${command}'"
+      exec "$@"
       ;;
   esac
 done

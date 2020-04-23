@@ -30,7 +30,7 @@ In order to create a Docker image using this Dockerfile you need to run the
 `docker` command with a few options.
 
 ```
-docker build --squash --force-rm --no-cache --quiet --tag <USER>/<IMAGE>:<TAG> <PATH>
+docker image build --force-rm --no-cache --quiet --tag <USER>/<IMAGE>:<TAG> <PATH>
 ```
 
 * `<USER>` - *[required]* The user that will own the container image (e.g.: "johndoe").
@@ -41,14 +41,20 @@ docker build --squash --force-rm --no-cache --quiet --tag <USER>/<IMAGE>:<TAG> <
 A build example:
 
 ```
-docker build --squash --force-rm --no-cache --quiet --tag johndoe/my_mongodb:latest .
+docker image build --force-rm --no-cache --quiet --tag johndoe/my_mongodb:latest .
 ```
 
-To clean the _<none>_ image(s) left by the `--squash` option the following
+To clean any _<none>_ image(s) left by the build process the following
 command can be used:
 
 ```
-docker rmi `docker images --filter "dangling=true" --quiet`
+docker image rm `docker image ls --filter "dangling=true" --quiet`
+```
+
+You can also use the following command to achieve the same result:
+
+```
+docker image prune -f
 ```
 
 ### Instantiate a Container
@@ -98,13 +104,13 @@ After configuring the MongoDB server the same can now be started.
 Starting the MongoDB server can be done with the `start` command.
 
 ```
-docker run --volume <MONGODB_VOL>:/data/mongodb:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
+docker container run --volume <MONGODB_VOL>:/data/mongodb:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
 ```
 
 An example on how the MongoDB service can be started:
 
 ```
-docker run --volume my_mongodb:/data/mongodb:rw --detach --publish 27017:27017 --name my_mongodb johndoe/my_mongodb:latest start
+docker container run --volume my_mongodb:/data/mongodb:rw --detach --publish 27017:27017 --name my_mongodb johndoe/my_mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:

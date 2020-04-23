@@ -20,7 +20,8 @@ TESTS_FAIL=0
 TESTS_PASS=0
 TESTS_TOTAL=0
 
-__MONGODB_DATA__="/data/mongodb"
+__DATA_DIR__="/data"
+__MONGODB_DATA__="${__DATA_DIR__}/mongodb"
 
 echo '=== Docker Build Test ==='
 
