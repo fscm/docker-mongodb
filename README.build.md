@@ -5,7 +5,7 @@ Docker image with MongoDB.
 ## Synopsis
 
 This script will create a Docker image with MongoDB installed and with all
-of the required initialisation scripts.
+of the required initialization scripts.
 
 The Docker image resulting from this script should be the one used to
 instantiate a MongoDB server.
@@ -104,8 +104,12 @@ After configuring the MongoDB server the same can now be started.
 Starting the MongoDB server can be done with the `start` command.
 
 ```
-docker container run --volume <MONGODB_VOL>:/data/mongodb:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
+docker container run --volume <MONGODB_VOL>:/data:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
 ```
+
+To help managing the container and the MongoDB instance a name can be given
+to the container. To do this use the `--name <NAME>` docker option when
+starting the server
 
 An example on how the MongoDB service can be started:
 

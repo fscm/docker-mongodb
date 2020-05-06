@@ -81,6 +81,10 @@ Starting the MongoDB server can be done with the `start` command.
 docker container run --volume MONGODB_VOL:/data:rw --detach --publish 27017:27017 fscm/mongodb:latest start
 ```
 
+To help managing the container and the MongoDB instance a name can be given
+to the container. To do this use the `--name <NAME>` docker option when
+starting the server
+
 An example on how the MongoDB service can be started:
 
 ```
