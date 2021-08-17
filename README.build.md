@@ -29,31 +29,31 @@ Docker installation instructions can be found
 In order to create a Docker image using this Dockerfile you need to run the
 `docker` command with a few options.
 
-```
+```shell
 docker image build --force-rm --no-cache --quiet --tag <USER>/<IMAGE>:<TAG> <PATH>
 ```
 
-* `<USER>` - *[required]* The user that will own the container image (e.g.: "johndoe").
-* `<IMAGE>` - *[required]* The container name (e.g.: "mongodb").
-* `<TAG>` - *[required]* The container tag (e.g.: "latest").
-* `<PATH>` - *[required]* The location of the Dockerfile folder.
+- `<USER>` - *[required]* The user that will own the container image (e.g.: "johndoe").
+- `<IMAGE>` - *[required]* The container name (e.g.: "mongodb").
+- `<TAG>` - *[required]* The container tag (e.g.: "latest").
+- `<PATH>` - *[required]* The location of the Dockerfile folder.
 
 A build example:
 
-```
+```shell
 docker image build --force-rm --no-cache --quiet --tag johndoe/my_mongodb:latest .
 ```
 
-To clean any _<none>_ image(s) left by the build process the following
+To clean any _`none`_ image(s) left by the build process the following
 command can be used:
 
-```
+```shell
 docker image rm `docker image ls --filter "dangling=true" --quiet`
 ```
 
 You can also use the following command to achieve the same result:
 
-```
+```shell
 docker image prune -f
 ```
 
@@ -80,13 +80,13 @@ be stored on a different volume.
 Creating volumes can be done using the `docker` tool. To create a volume use
 the following command:
 
-```
+```shell
 docker volume create --name <VOLUME_NAME>
 ```
 
 Two create the required volume the following command can be used:
 
-```
+```shell
 docker volume create --name my_mongodb
 ```
 
@@ -103,7 +103,7 @@ After configuring the MongoDB server the same can now be started.
 
 Starting the MongoDB server can be done with the `start` command.
 
-```
+```shell
 docker container run --volume <MONGODB_VOL>:/data:rw --detach --publish 27017:27017 <USER>/<IMAGE>:<TAG> start
 ```
 
@@ -113,13 +113,13 @@ starting the server
 
 An example on how the MongoDB service can be started:
 
-```
+```shell
 docker container run --volume my_mongodb:/data/mongodb:rw --detach --publish 27017:27017 --name my_mongodb johndoe/my_mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:
 
-```
+```shell
 docker container attach <CONTAINER_ID>
 ```
 
@@ -132,13 +132,13 @@ the command used to perform the initial start was as indicated before).
 
 To stop the server use the following command:
 
-```
+```shell
 docker container stop <CONTAINER_ID>
 ```
 
 To start the server again use the following command:
 
-```
+```shell
 docker container start <CONTAINER_ID>
 ```
 
@@ -147,7 +147,7 @@ docker container start <CONTAINER_ID>
 The MongoDB server status can be check by looking at the MongoDB server output
 data using the docker command:
 
-```
+```shell
 docker container logs <CONTAINER_ID>
 ```
 
@@ -155,7 +155,7 @@ docker container logs <CONTAINER_ID>
 
 Additional tags can be added to the image using the following command:
 
-```
+```shell
 docker image tag <image_id> <user>/<image>:<extra_tag>
 ```
 
@@ -165,19 +165,19 @@ After adding an image to Docker, that image can be pushed to a Docker registry..
 
 Make sure that you are logged in to the service.
 
-```
+```shell
 docker login
 ```
 
 When logged in, an image can be pushed using the following command:
 
-```
+```shell
 docker image push <user>/<image>:<tag>
 ```
 
 Extra tags can also be pushed.
 
-```
+```shell
 docker image push <user>/<image>:<extra_tag>
 ```
 
@@ -199,7 +199,7 @@ available, see the [tags on this repository](https://github.com/fscm/docker-mong
 
 ## Authors
 
-* **Frederico Martins** - [fscm](https://github.com/fscm)
+- **Frederico Martins** - [fscm](https://github.com/fscm)
 
 See also the list of [contributors](https://github.com/fscm/docker-mongodb/contributors)
 who participated in this project.

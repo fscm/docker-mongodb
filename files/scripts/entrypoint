@@ -21,7 +21,7 @@ ACTION_HELP=0
 ACTION_INIT=0
 ACTION_START=0
 
-__DATA_DIR__="/data"
+__DATA_DIR__="${DATA_DIR:-/data}"
 __MONGODB_DATA__="${__DATA_DIR__}/mongodb"
 
 
@@ -123,7 +123,7 @@ if [ "${ACTION_START}" -gt 0 ]; then
   fi
 
   # Start the MongoDB server
-  /bin/mongod --bind_ip_all --dbpath ${__MONGODB_DATA__}
+  mongod --bind_ip_all --dbpath ${__MONGODB_DATA__}
 fi
 
 # All done

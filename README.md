@@ -4,12 +4,7 @@ A small MongoDB image that can be used to start a MongoDB server.
 
 ## Supported tags
 
-- `4.0.5`
-- `4.0.6`
-- `4.0.10`
-- `4.0.11`
-- `4.2.1`
-- `4.2.6`, `latest`
+- `latest`
 
 ## What is MongoDB?
 
@@ -54,13 +49,13 @@ be stored on a different volume.
 Creating volumes can be done using the `docker` tool. To create a volume use
 the following command:
 
-```
+```shell
 docker volume create --name VOLUME_NAME
 ```
 
 Two create the required volume the following command can be used:
 
-```
+```shell
 docker volume create --name my_data
 ```
 
@@ -77,7 +72,7 @@ After configuring the MongoDB server the same can now be started.
 
 Starting the MongoDB server can be done with the `start` command.
 
-```
+```shell
 docker container run --volume MONGODB_VOL:/data:rw --detach --publish 27017:27017 fscm/mongodb:latest start
 ```
 
@@ -87,13 +82,13 @@ starting the server
 
 An example on how the MongoDB service can be started:
 
-```
+```shell
 docker container run --volume my_data:/data:rw --detach --publish 27017:27017 --name my_mongodb fscm/mongodb:latest start
 ```
 
 To see the output of the container that was started use the following command:
 
-```
+```shell
 docker container attach CONTAINER_ID
 ```
 
@@ -106,13 +101,13 @@ the command used to perform the initial start was as indicated before).
 
 To stop the server use the following command:
 
-```
+```shell
 docker container stop CONTAINER_ID
 ```
 
 To start the server again use the following command:
 
-```
+```shell
 docker container start CONTAINER_ID
 ```
 
@@ -121,7 +116,7 @@ docker container start CONTAINER_ID
 The MongoDB server status can be check by looking at the MongoDB server output
 data using the docker command:
 
-```
+```shell
 docker container logs CONTAINER_ID
 ```
 
@@ -137,7 +132,7 @@ available, see the [tags on this repository](https://github.com/fscm/docker-mong
 
 ## Authors
 
-* **Frederico Martins** - [fscm](https://github.com/fscm)
+- **Frederico Martins** - [fscm](https://github.com/fscm)
 
 See also the list of [contributors](https://github.com/fscm/docker-mongodb/contributors)
 who participated in this project.
